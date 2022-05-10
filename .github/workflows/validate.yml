@@ -34,7 +34,7 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          soft_fail: false
+          soft_fail: true
 
   terratest:
     name: deploy
