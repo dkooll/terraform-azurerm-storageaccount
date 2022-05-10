@@ -62,7 +62,7 @@ resource "azurerm_storage_container" "sc" {
 # Queues
 #----------------------------------------------------------------------------------------
 
-resource "azurerm_storage_queue" "example" {
+resource "azurerm_storage_queue" "sq" {
   for_each = {
     for sq in local.queues : "${sq.sa_key}.${sq.sq_key}" => sq
   }
@@ -75,21 +75,21 @@ resource "azurerm_storage_queue" "example" {
 # shares
 #----------------------------------------------------------------------------------------
 
-resource "azurerm_storage_share" "example" {
+resource "azurerm_storage_share" "sh" {
   for_each = {
     for fs in local.shares : "${fs.sa_key}.${fs.fs_key}" => fs
   }
 
   name                 = each.value.name
   storage_account_name = each.value.storage_account_name
-  quota                = 50
+  quota                = each.value.quota
 }
 
 #----------------------------------------------------------------------------------------
 # tables
 #----------------------------------------------------------------------------------------
 
-resource "azurerm_storage_table" "example" {
+resource "azurerm_storage_table" "st" {
   for_each = {
     for st in local.tables : "${st.sa_key}.${st.st_key}" => st
   }
