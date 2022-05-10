@@ -72,6 +72,7 @@ module "storage" {
         t1 = {name = "table1"}
         t2 = {name = "table2"}
       }
+
     sa2 = {
       location  = "southeastasia"
       tier      = "Standard"
@@ -123,6 +124,7 @@ module "storage" {
         fs1 = {name = "smbfileshare1",quota = 50}
         fs2 = {name = "smbfileshare2",quota = 10}
       }
+
     sa2 = {
       location  = "southeastasia"
       tier      = "Standard"
