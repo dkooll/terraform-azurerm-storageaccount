@@ -30,11 +30,11 @@ jobs:
         run: terraform fmt -check -recursive
         continue-on-error: false
 
-      - name: checkov
-        id: checkov
-        uses: bridgecrewio/checkov-action@master
-        with:
-          soft_fail: true
+      # - name: checkov
+      #   id: checkov
+      #   uses: bridgecrewio/checkov-action@master
+      #   with:
+      #     soft_fail: true
 
   terratest:
     name: deploy
