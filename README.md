@@ -38,16 +38,18 @@ Terraform module which creates storage account resources on Azure.
 ### Usage: `single storage account multiple containers`
 
 ```terraform
-module "vnet" {
-  source = "github.com/dkooll/terraform-azurerm-vnet"
+module "storage" {
+  source = "github.com/dkooll/terraform-azurerm-storageaccount"
   version = "1.0.0"
-  vnets = {
-    vnet1 = {
-      cidr     = ["10.18.0.0/16"]
-      dns      = ["8.8.8.8","7.7.7.7"]
-      location = "westeurope"
-      subnets = {
-        sn1 = {cidr = ["10.18.1.0/24"]}
+  storage_accounts = {
+    sa1 = {
+      location  = "westeurope"
+      tier      = "Standard"
+      repl_type = "GRS"
+      kind      = "StorageV2"
+      containers = {
+        sc1 = {name = "mystore250",access_type = "private"}
+        sc2 = {name = "mystore251",access_type = "private"}
       }
     }
   }
@@ -57,17 +59,27 @@ module "vnet" {
 ### Usage: `multiple storage accounts multiple tables`
 
 ```terraform
-module "vnet" {
-  source = "github.com/dkooll/terraform-azurerm-vnet"
+module "storage" {
+  source = "github.com/dkooll/terraform-azurerm-storageaccount"
   version = "1.0.0"
-  vnets = {
-    vnet1 = {
-      cidr     = ["10.18.0.0/16"]
-      dns      = ["8.8.8.8"]
-      location = "westeurope"
-      subnets = {
-        sn1 = {cidr = ["10.18.1.0/24"]}
-        sn2 = {cidr = ["10.18.2.0/24"]}
+  storage_accounts = {
+    sa1 = {
+      location  = "eastus2"
+      tier      = "Standard"
+      repl_type = "GRS"
+      kind      = "StorageV2"
+      tables = {
+        t1 = {name = "table1"}
+        t2 = {name = "table2"}
+      }
+    sa2 = {
+      location  = "southeastasia"
+      tier      = "Standard"
+      repl_type = "GRS"
+      kind      = "StorageV2"
+      tables = {
+        t1 = {name = "table1"}
+        t2 = {name = "table2"}
       }
     }
   }
@@ -77,36 +89,18 @@ module "vnet" {
 ### Usage: `single storage account multiple queues`
 
 ```terraform
-module "vnet" {
-  source = "github.com/dkooll/terraform-azurerm-vnet"
+module "storage" {
+  source = "github.com/dkooll/terraform-azurerm-storageaccount"
   version = "1.0.0"
-  vnets = {
-    vnet1 = {
-      cidr     = ["10.18.0.0/16"]
-      dns      = ["8.8.8.8"]
-      location = "westeurope"
-      subnets = {
-        sn1 = {
-          cidr = ["10.18.1.0/24"]
-          endpoints = [
-            "Microsoft.Storage",
-            "Microsoft.Sql"
-          ]
-        }
-      }
-    }
-
-    vnet2 = {
-      cidr     = ["10.19.0.0/16"]
-      dns      = []
-      location = "eastus2"
-      subnets = {
-        sn1 = {
-          cidr = ["10.19.1.0/24"]
-          endpoints = [
-            "Microsoft.Web"
-          ]
-        }
+  storage_accounts = {
+    sa1 = {
+      location  = "eastus2"
+      tier      = "Standard"
+      repl_type = "GRS"
+      kind      = "StorageV2"
+      queues = {
+        q1 = {name = "queue1"}
+        q2 = {name = "queue2"}
       }
     }
   }
@@ -116,23 +110,27 @@ module "vnet" {
 ### Usage: `multiple storage accounts multiple fileshares`
 
 ```terraform
-module "vnet" {
-  source = "github.com/dkooll/terraform-azurerm-vnet"
+module "storage" {
+  source = "github.com/dkooll/terraform-azurerm-storageaccount"
   version = "1.0.0"
-  vnets = {
-    vnet1 = {
-      cidr     = ["10.18.0.0/16"]
-      dns      = ["8.8.8.8"]
-      location = "westeurope"
-      subnets = {
-        sn1 = {
-          cidr = ["10.18.1.0/24"]
-          delegations = [
-            "Microsoft.ContainerInstance/containerGroups",
-            "Microsoft.Kusto/clusters",
-            "Microsoft.Sql/managedInstances"
-          ]
-        }
+  storage_accounts = {
+    sa1 = {
+      location  = "eastus2"
+      tier      = "Standard"
+      repl_type = "GRS"
+      kind      = "StorageV2"
+      shares = {
+        fs1 = {name = "smbfileshare1",quota = 50}
+        fs2 = {name = "smbfileshare2",quota = 10}
+      }
+    sa2 = {
+      location  = "southeastasia"
+      tier      = "Standard"
+      repl_type = "GRS"
+      kind      = "StorageV2"
+      shares = {
+        fs1 = {name = "smbfileshare1",quota = 5}
+        fs2 = {name = "smbfileshare2",quota = 10}
       }
     }
   }
