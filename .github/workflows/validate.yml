@@ -24,7 +24,7 @@ jobs:
 
       - name: terraform cli
         id: cli
-        run: 'terraform ${{ matrix.terraform }}'
+        run: 'terraform + ${{ matrix.terraform }}'
 
       # - name: terraform validate
       #   id: validate
