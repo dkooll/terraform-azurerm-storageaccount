@@ -12,6 +12,7 @@ jobs:
     environment : development
 
     strategy:
+      max-parallel: 1
       matrix:
         cli: ["terraform init", "terraform validate", "terraform fmt -check -recursive"]
 
