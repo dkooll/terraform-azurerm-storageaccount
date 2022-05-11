@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        cli: ["init", "validate", "fmt -check -recursive"]
+        cli: ["terraform init", "terraform validate", "terraform fmt -check -recursive"]
 
     steps:
       - uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
 
       - name: terraform cli
         id: cli
-        run: terraform ${{ matrix.terraform }}
+        run: ${{ matrix.terraform }}
 
       # - name: terraform validate
       #   id: validate
