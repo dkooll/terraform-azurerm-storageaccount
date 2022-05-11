@@ -14,7 +14,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        cli: ["init", "validate", "fmt -check -recursive"]
+        cli: [init, validate, fmt -check -recursive]
 
     steps:
       - uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
 
       - name: terraform cli
         id: cli
-        run: 'terraform + ${{ matrix.terraform }}'
+        run: 'terraform ${{ matrix.terraform }}'
 
       # - name: terraform validate
       #   id: validate
