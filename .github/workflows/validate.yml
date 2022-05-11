@@ -11,24 +11,28 @@ jobs:
     runs-on: ubuntu-latest
     environment : development
 
+    strategy:
+      matrix:
+        cli: ["init", "validate", "fmt -check -recursive"]
+
     steps:
       - uses: actions/checkout@v2
 
       - name: setup terraform
         uses: hashicorp/setup-terraform@v1
 
-      - name: terraform init
-        id: init
-        run: terraform init
+      - name: terraform cli
+        id: cli
+        run: terraform ${{ matrix.terraform }}
 
-      - name: terraform validate
-        id: validate
-        run: terraform validate
+      # - name: terraform validate
+      #   id: validate
+      #   run: terraform validate
 
-      - name: terraform fmt
-        id: fmt
-        run: terraform fmt -check -recursive
-        continue-on-error: false
+      # - name: terraform fmt
+      #   id: fmt
+      #   run: terraform fmt -check -recursive
+      #   continue-on-error: false
 
       # - name: checkov
       #   id: checkov
