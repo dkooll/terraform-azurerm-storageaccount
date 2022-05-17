@@ -32,12 +32,13 @@ resource "random_string" "random" {
 resource "azurerm_storage_account" "sa" {
   for_each = var.storage_accounts
 
-  name                     = "sa${var.env}${each.key}${random_string.random[each.key].result}"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = each.value.location
-  account_tier             = each.value.tier
-  account_replication_type = each.value.repl_type
-  account_kind             = each.value.kind
+  name                            = "sa${var.env}${each.key}${random_string.random[each.key].result}"
+  resource_group_name             = azurerm_resource_group.rg.name
+  location                        = each.value.location
+  account_tier                    = each.value.tier
+  account_replication_type        = each.value.repl_type
+  account_kind                    = each.value.kind
+  allow_nested_items_to_be_public = false
 
   identity {
     type = "SystemAssigned"
