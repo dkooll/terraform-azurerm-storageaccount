@@ -98,3 +98,12 @@ resource "azurerm_storage_table" "st" {
   name                 = each.value.name
   storage_account_name = each.value.storage_account_name
 }
+
+#----------------------------------------------------------------------------------------
+# private dns zone
+#----------------------------------------------------------------------------------------
+
+resource "azurerm_private_dns_zone" "zone" {
+  name                = "privatelink.blob.core.windows.net"
+  resource_group_name = azurerm_resource_group.rg.name
+}

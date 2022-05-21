@@ -28,6 +28,7 @@ Terraform module which creates storage account resources on Azure.
 | `azurerm_storage_queue` | resource |
 | `azurerm_storage_share` | resource |
 | `azurerm_storage_table` | resource |
+| `azurerm_private_dns_zone` | resource |
 
 ## Inputs
 
