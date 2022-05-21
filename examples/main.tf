@@ -7,8 +7,8 @@ module "storage" {
       repl_type = "GRS"
       kind      = "StorageV2"
       containers = {
-        sc1 = {name = "mystore250",access_type = "private"}
-        sc2 = {name = "mystore251",access_type = "private"}
+        sc1 = { name = "mystore250", access_type = "private" }
+        sc2 = { name = "mystore251", access_type = "private" }
       }
     }
 
