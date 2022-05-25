@@ -120,13 +120,13 @@ module "storage" {
 
 | Name | Type |
 | :-- | :-- |
-| [azurerm_resource_group]() | resource |
-| [random_string]() | resource |
-| [azurerm_storage_account]() | resource |
-| [azurerm_storage_container]() | resource |
-| [azurerm_storage_queue]() | resource |
-| [azurerm_storage_share]() | resource |
-| [azurerm_storage_table]() | resource |
+| [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
+| [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [azurerm_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account) | resource |
+| [azurerm_storage_container](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container) | resource |
+| [azurerm_storage_queue](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_queue) | resource |
+| [azurerm_storage_share](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |
+| [azurerm_storage_table](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
 
 ## Inputs
 
@@ -138,5 +138,8 @@ module "storage" {
 
 | Name | Description |
 | :-- | :-- |
-| `subnets` | contains all subnets |
-| `vnets` | contains all vnets |
+| `storageaccounts` | contains all storage accounts |
+| `containers` | contains all containers |
+| `tables` | contains all tables |
+| `queues` | contains all queues |
+| `shares` | contains all shares |
