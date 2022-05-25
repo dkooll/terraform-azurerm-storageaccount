@@ -1,44 +1,20 @@
 ![example workflow](https://github.com/dkooll/terraform-azurerm-storageaccount/actions/workflows/validate.yml/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Storage Account `[Microsoft.Storage/storageAccounts]`
+# Storage Account
 
-Terraform module which creates storage account resources on Azure.
+Terraform module which creates storage account resources on Azure. A single object storageaccounts is referenced. It contains several nested keys, such as containers, tables, queues and shares.
 
-## Table of Contents
+To be able to use these resources more than once on each storage account, local variables are used in combination with the flatten function to produce lists of maps.
 
-- [Storage Account](#storage-account)
-  - [**Table of Contents**](#table-of-contents)
-  - [Resources](#resources)
-  - [Inputs](#inputs)
-    - [Usage: `single storage account multiple containers`](#inputs-usage-single-storage-account-multiple-containers)
-    - [Usage: `multiple storage accounts multiple tables`](#inputs-usage-multiple-storage-accounts-multiple-tables)
-    - [Usage: `single storage account multiple queues`](#inputs-usage-single-storage-account-multiple-queues)
-    - [Usage: `multiple storage accounts multiple fileshares`](#inputs-usage-multiple-storage-accounts-multiple-fileshares)
-  - [Outputs](#outputs)
+The code base is validated using [terratest](https://terratest.gruntwork.io/). These tests can be found [here](tests).
 
-## Resources
+The [example](examples) directory contains any prerequirements and integrations to test the code and is set as the working directory.
 
-| Name | Type |
-| :-- | :-- |
-| `azurerm_resource_group` | resource |
-| `random_string` | resource |
-| `azurerm_storage_account` | resource |
-| `azurerm_storage_container` | resource |
-| `azurerm_storage_queue` | resource |
-| `azurerm_storage_share` | resource |
-| `azurerm_storage_table` | resource |
-| `azurerm_private_dns_zone` | resource |
+The below examples shows the usage and available features when consuming the module.
 
-## Inputs
+## Usage: single storage account multiple containers
 
-| Name | Description | Type | Required |
-| :-- | :-- | :-- | :-- |
-| `storage_accounts` | describes storage related configuration | object | yes |
-
-### Usage: `single storage account multiple containers`
-
-```terraform
+```hcl
 module "storage" {
   source = "github.com/dkooll/terraform-azurerm-storageaccount"
   version = "1.0.0"
@@ -57,9 +33,9 @@ module "storage" {
 }
 ```
 
-### Usage: `multiple storage accounts multiple tables`
+## Usage: multiple storage accounts multiple tables
 
-```terraform
+```hcl
 module "storage" {
   source = "github.com/dkooll/terraform-azurerm-storageaccount"
   version = "1.0.0"
@@ -88,9 +64,9 @@ module "storage" {
 }
 ```
 
-### Usage: `single storage account multiple queues`
+## Usage: single storage account multiple queues
 
-```terraform
+```hcl
 module "storage" {
   source = "github.com/dkooll/terraform-azurerm-storageaccount"
   version = "1.0.0"
@@ -109,9 +85,9 @@ module "storage" {
 }
 ```
 
-### Usage: `multiple storage accounts multiple fileshares`
+## Usage: multiple storage accounts multiple fileshares
 
-```terraform
+```hcl
 module "storage" {
   source = "github.com/dkooll/terraform-azurerm-storageaccount"
   version = "1.0.0"
@@ -140,9 +116,30 @@ module "storage" {
 }
 ```
 
+## Resources
+
+| Name | Type |
+| :-- | :-- |
+| [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
+| [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [azurerm_storage_account](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account) | resource |
+| [azurerm_storage_container](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container) | resource |
+| [azurerm_storage_queue](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_queue) | resource |
+| [azurerm_storage_share](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |
+| [azurerm_storage_table](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
+
+## Inputs
+
+| Name | Description | Type | Required |
+| :-- | :-- | :-- | :-- |
+| `storage_accounts` | describes storage related configuration | object | yes |
+
 ## Outputs
 
 | Name | Description |
 | :-- | :-- |
-| `subnets` | contains all subnets |
-| `vnets` | contains all vnets |
+| `storageaccounts` | contains all storage accounts |
+| `containers` | contains all containers |
+| `tables` | contains all tables |
+| `queues` | contains all queues |
+| `shares` | contains all shares |
