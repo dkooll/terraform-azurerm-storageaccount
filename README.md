@@ -2,7 +2,8 @@
 
 # Storage Account
 
-Terraform module which creates storage account resources on Azure.
+Terraform module which creates storage account resources on Azure. A single object storageaccounts is referenced. It contains several nested keys, such as containers, tables, queues and shares.
+To be able to use these resources more than once on each storage account local variables are used in combination with the flatten function to produce lists of maps.
 
 The code base is validated using [terratest](https://terratest.gruntwork.io/). These tests can be found [here](tests).
 
@@ -10,7 +11,7 @@ The [example](examples) directory contains any prerequirements and integrations 
 
 The below examples shows the usage and available features when consuming the module.
 
-## Usage: `single storage account multiple containers`
+## Usage: single storage account multiple containers
 
 ```hcl
 module "storage" {
@@ -31,7 +32,7 @@ module "storage" {
 }
 ```
 
-## Usage: `multiple storage accounts multiple tables`
+## Usage: multiple storage accounts multiple tables
 
 ```hcl
 module "storage" {
@@ -62,7 +63,7 @@ module "storage" {
 }
 ```
 
-## Usage: `single storage account multiple queues`
+## Usage: single storage account multiple queues
 
 ```hcl
 module "storage" {
@@ -83,7 +84,7 @@ module "storage" {
 }
 ```
 
-## Usage: `multiple storage accounts multiple fileshares`
+## Usage: multiple storage accounts multiple fileshares
 
 ```hcl
 module "storage" {
