@@ -147,7 +147,3 @@ module "storage" {
 | Name | Description |
 | :-- | :-- |
 | `storageaccounts` | contains all storage accounts |
-| `containers` | contains all containers |
-| `tables` | contains all tables |
-| `queues` | contains all queues |
-| `shares` | contains all shares |
