@@ -154,19 +154,25 @@ storage_accounts = {
     type     = required(string)
     kind     = required(string)
   }
-}
-```
-
-| Name | Description |
-| :-- | :-- |
-| `name` | describes storage related configuration |
-| `access_type` | describes storage related configuration |
-
-```hcl
     containers = optional(object({
       name        = required(string)
       access_type = required(string)
     }))
+    queues = optional(object({
+      name = required(string)
+    }))
+    shares = optional(object({
+      name  = required(string)
+      quota = optional(number)
+    }))
+    tables = optional(object({
+      name = required(string)
+    }))
+}
+```
+
+```hcl
+
 ```
 
 ## Outputs
