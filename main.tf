@@ -36,7 +36,7 @@ resource "azurerm_storage_account" "sa" {
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = each.value.location
   account_tier                    = each.value.tier
-  account_replication_type        = each.value.repl_type
+  account_replication_type        = each.value.type
   account_kind                    = each.value.kind
   allow_nested_items_to_be_public = false
 
@@ -97,4 +97,18 @@ resource "azurerm_storage_table" "st" {
 
   name                 = each.value.name
   storage_account_name = each.value.storage_account_name
+}
+
+#----------------------------------------------------------------------------------------
+# advanced threat protection
+#----------------------------------------------------------------------------------------
+
+resource "azurerm_advanced_threat_protection" "prot" {
+  for_each = {
+    for sa, defender in var.storage_accounts : sa => defender
+    if defender.enable_protection == "true"
+  }
+
+  target_resource_id = azurerm_storage_account.sa[each.key].id
+  enabled            = each.value.enable_protection
 }

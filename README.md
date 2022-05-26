@@ -20,10 +20,11 @@ module "storage" {
   version = "1.0.0"
   storage_accounts = {
     sa1 = {
-      location  = "westeurope"
-      tier      = "Standard"
-      repl_type = "GRS"
-      kind      = "StorageV2"
+      location          = "westeurope"
+      tier              = "Standard"
+      type              = "GRS"
+      kind              = "StorageV2"
+      enable_protection = "true"
       containers = {
         sc1 = {name = "mystore250",access_type = "private"}
         sc2 = {name = "mystore251",access_type = "private"}
@@ -41,20 +42,22 @@ module "storage" {
   version = "1.0.0"
   storage_accounts = {
     sa1 = {
-      location  = "eastus2"
-      tier      = "Standard"
-      repl_type = "GRS"
-      kind      = "StorageV2"
+      location          = "eastus2"
+      tier              = "Standard"
+      type              = "GRS"
+      kind              = "StorageV2"
+      enable_protection = "false"
       tables = {
         t1 = {name = "table1"}
         t2 = {name = "table2"}
       }
 
     sa2 = {
-      location  = "southeastasia"
-      tier      = "Standard"
-      repl_type = "GRS"
-      kind      = "StorageV2"
+      location          = "southeastasia"
+      tier              = "Standard"
+      type              = "GRS"
+      kind              = "StorageV2"
+      enable_protection = "false"
       tables = {
         t1 = {name = "table1"}
         t2 = {name = "table2"}
@@ -72,10 +75,11 @@ module "storage" {
   version = "1.0.0"
   storage_accounts = {
     sa1 = {
-      location  = "eastus2"
-      tier      = "Standard"
-      repl_type = "GRS"
-      kind      = "StorageV2"
+      location          = "eastus2"
+      tier              = "Standard"
+      type              = "GRS"
+      kind              = "StorageV2"
+      enable_protection = "false"
       queues = {
         q1 = {name = "queue1"}
         q2 = {name = "queue2"}
@@ -93,20 +97,22 @@ module "storage" {
   version = "1.0.0"
   storage_accounts = {
     sa1 = {
-      location  = "eastus2"
-      tier      = "Standard"
-      repl_type = "GRS"
-      kind      = "StorageV2"
+      location          = "eastus2"
+      tier              = "Standard"
+      type              = "GRS"
+      kind              = "StorageV2"
+      enable_protection = "false"
       shares = {
         fs1 = {name = "smbfileshare1",quota = 50}
         fs2 = {name = "smbfileshare2",quota = 10}
       }
 
     sa2 = {
-      location  = "southeastasia"
-      tier      = "Standard"
-      repl_type = "GRS"
-      kind      = "StorageV2"
+      location          = "southeastasia"
+      tier              = "Standard"
+      type              = "GRS"
+      kind              = "StorageV2"
+      enable_protection = "false"
       shares = {
         fs1 = {name = "smbfileshare1",quota = 5}
         fs2 = {name = "smbfileshare2",quota = 10}
@@ -127,6 +133,7 @@ module "storage" {
 | [azurerm_storage_queue](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_queue) | resource |
 | [azurerm_storage_share](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |
 | [azurerm_storage_table](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
+| [azurerm_advanced_threat_protection](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/advanced_threat_protection) | resource |
 
 ## Inputs
 
