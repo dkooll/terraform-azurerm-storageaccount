@@ -4,21 +4,26 @@ import (
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/stretchr/testify/require"
 )
 
 func TestApplyNoError(t *testing.T) {
 	t.Parallel()
 
-	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+	tests := []string{
+		"../examples/simple",
+	}
 
-		TerraformDir: "../examples",
-		NoColor:      true,
-	})
+	for _, test := range tests {
+		t.Run(test, func(t *testing.T) {
+			terraformOptions := &terraform.Options{
+				TerraformDir: test,
+				NoColor:      true,
+			}
 
-	defer terraform.Destroy(t, terraformOptions)
-	out := terraform.InitAndApply(t, terraformOptions)
+			terraform.WithDefaultRetryableErrors(t, &terraform.Options{})
 
-	// Check that NoColor correctly doesn't output the colour escape codes which look like [0m,[1m or [32m
-	require.NotRegexp(t, `\[\d*m`, out, "Output should not contain color escape codes")
+			defer terraform.Destroy(t, terraformOptions)
+			terraform.InitAndApply(t, terraformOptions)
+		})
+	}
 }
