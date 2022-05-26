@@ -146,7 +146,7 @@ module "storage" {
 | `type` | describes storage related configuration |
 | `kind` | describes storage related configuration |
 
-```
+```hcl
 storage_accounts = {
   {
     location = required(string)
@@ -155,6 +155,13 @@ storage_accounts = {
     kind     = required(string)
   }
 }
+```
+
+```hcl
+    containers = optional(object({
+        name        = required(string)
+        access_type = required(string)
+    }))
 ```
 
 ## Outputs
