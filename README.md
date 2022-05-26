@@ -139,6 +139,13 @@ module "storage" {
 
 ## Inputs
 
+| Name | Description |
+| :-- | :-- |
+| `location` | describes storage related configuration |
+| `tier` | describes storage related configuration |
+| `type` | describes storage related configuration |
+| `kind` | describes storage related configuration |
+
 ```hcl
 storage_accounts = {
   {
@@ -149,6 +156,11 @@ storage_accounts = {
   }
 }
 ```
+
+| Name | Description |
+| :-- | :-- |
+| `name` | describes storage related configuration |
+| `access_type` | describes storage related configuration |
 
 ```hcl
     containers = optional(object({
