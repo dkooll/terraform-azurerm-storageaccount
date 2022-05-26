@@ -150,7 +150,6 @@ storage_accounts = {
 }
 ```
 
-## Inputs: containers
 ```hcl
     containers = optional(object({
       name        = required(string)
