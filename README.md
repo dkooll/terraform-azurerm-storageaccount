@@ -2,7 +2,8 @@
 
 # Storage Account
 
-Terraform module which creates storage account resources on Azure. The below features are made available:
+Terraform module which creates storage account resources on Azure.
+The below features are made available:
 
 - Multiple storage accounts
 - Multiple shares, tables, containers and queues on each storage account
