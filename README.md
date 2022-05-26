@@ -154,14 +154,21 @@ storage_accounts = {
     type     = required(string)
     kind     = required(string)
   }
-}
-```
-
-```hcl
     containers = optional(object({
         name        = required(string)
         access_type = required(string)
     }))
+    queues = optional(object({
+        name = required(string)
+    }))
+    shares = optional(object({
+        name = required(string)
+        quota = optional(number)
+    }))
+    tables = optional(object({
+        name = required(string)
+    }))
+}
 ```
 
 ## Outputs
