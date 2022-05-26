@@ -146,7 +146,7 @@ module "storage" {
 | `type` | describes storage related configuration |
 | `kind` | describes storage related configuration |
 
-```hcl
+```
 storage_accounts = {
   {
     location = required(string)
