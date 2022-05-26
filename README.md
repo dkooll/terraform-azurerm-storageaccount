@@ -33,6 +33,15 @@ module "storage" {
 }
 ```
 
+variable "containers" {
+  description = "List of containers to create and their access levels."
+  type = list(object({
+    name        = string
+    access_type = string
+  }))
+  default = []
+}
+
 ## Usage: multiple storage accounts multiple tables
 
 ```hcl
@@ -133,6 +142,35 @@ module "storage" {
 | Name | Description | Type | Required |
 | :-- | :-- | :-- | :-- |
 | `storage_accounts` | describes storage related configuration | object | yes |
+
+```hcl
+storage_accounts = {
+  {
+    location = required(string)
+    tier = required(string)
+    repl_type = required(string)
+    kind = required(string)
+
+    containers = optional(object({
+      name = required(string)
+      access_type = required(string)
+    }))
+
+    tables = optional(object({
+      name = required(string)
+    }))
+
+    queues = optional(object({
+      name = required(string)
+    }))
+
+    shares = optional(object({
+      name = required(string)
+      quota = optional(number)
+    }))
+  }
+}
+```
 
 ## Outputs
 
