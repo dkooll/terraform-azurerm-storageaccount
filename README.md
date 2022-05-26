@@ -34,19 +34,10 @@ module "storage" {
 ```
 
 ```hcl
-storage_accounts = {
- {
-    location = required(string)
-    tier     = required(string)
-    type     = required(string)
-    kind     = required(string)
-
-    containers = optional(object({
-        name        = required(string)
-        access_type = required(string)
-    }))
- }
-}
+  containers = optional(object({
+    name        = required(string)
+    access_type = required(string)
+  }))
 ```
 
 ## Usage: multiple storage accounts multiple tables
