@@ -2,13 +2,14 @@
 
 # Storage Account
 
-Terraform module which creates storage account resources on Azure. A single object storageaccounts is referenced. It contains several nested keys, such as containers, tables, queues and shares.
+Terraform module which creates storage account resources on Azure.
 
-To be able to use these resources more than once on each storage account, local variables are used in combination with the flatten function to produce lists of maps.
+## Features
 
-The code base is validated using [terratest](https://terratest.gruntwork.io/). These tests can be found [here](tests).
-
-The [example](examples) directory contains any prerequirements and integrations to test the code and is set as the working directory.
+- Multiple storage accounts
+- Multiple shares, tables, containers and queues on each storage account
+- Advanced threat protection
+- Ability to test different [integrations](examples) using terratest
 
 The below examples shows the usage and available features when consuming the module.
 
