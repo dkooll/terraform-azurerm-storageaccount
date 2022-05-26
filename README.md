@@ -137,36 +137,19 @@ module "storage" {
 | [azurerm_storage_share](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_share) | resource |
 | [azurerm_storage_table](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_table) | resource |
 
-## Inputs
-
-| Name | Description | Type | Required |
-| :-- | :-- | :-- | :-- |
-| `storage_accounts` | describes storage related configuration | object | yes |
+## Inputs: containers
 
 ```hcl
 storage_accounts = {
   {
     location = required(string)
-    tier = required(string)
-    repl_type = required(string)
-    kind = required(string)
+    tier     = required(string)
+    type     = required(string)
+    kind     = required(string)
 
     containers = optional(object({
-      name = required(string)
+      name        = required(string)
       access_type = required(string)
-    }))
-
-    tables = optional(object({
-      name = required(string)
-    }))
-
-    queues = optional(object({
-      name = required(string)
-    }))
-
-    shares = optional(object({
-      name = required(string)
-      quota = optional(number)
     }))
   }
 }
