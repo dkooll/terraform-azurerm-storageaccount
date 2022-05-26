@@ -4,14 +4,14 @@
 
 Terraform module which creates storage account resources on Azure.
 
-## Features
+The below features are made available:
 
 - Multiple storage accounts
 - Multiple shares, tables, containers and queues on each storage account
 - Advanced threat protection
-- Ability to test different [integrations](examples) using terratest
+- Terratest is used to validate different [integrations](examples)
 
-The below examples shows the usage and available features when consuming the module.
+The below examples shows the usage when consuming the module:
 
 ## Usage: single storage account multiple containers
 
