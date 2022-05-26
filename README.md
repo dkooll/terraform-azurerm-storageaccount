@@ -153,19 +153,10 @@ storage_accounts = {
   tier     = required(string)
   type     = required(string)
   kind     = required(string)
+
   containers = optional(object({
       name        = required(string)
       access_type = required(string)
-  }))
-  queues = optional(object({
-      name = required(string)
-  }))
-  shares = optional(object({
-      name = required(string)
-      quota = optional(number)
-  }))
-  tables = optional(object({
-      name = required(string)
   }))
 }
 ```
