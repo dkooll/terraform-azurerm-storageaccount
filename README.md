@@ -9,7 +9,7 @@ The below features are made available:
 - Multiple storage accounts
 - Multiple shares, tables, containers and queues on each storage account
 - Advanced threat protection
-- Terratest is used to validate different [integrations](examples)
+- Terratest is used to validate different integrations in [examples](examples)
 
 The below examples shows the usage when consuming the module:
 
