@@ -22,10 +22,8 @@ module "storage" {
   storage_accounts = {
     sa1 = {
       location          = "westeurope"
-      tier              = "Standard"
-      type              = "GRS"
-      kind              = "StorageV2"
       enable_protection = "true"
+      sku               = { tier = "Standard", type = "GRS" }
       containers = {
         sc1 = {name = "mystore250",access_type = "private"}
         sc2 = {name = "mystore251",access_type = "private"}
@@ -44,21 +42,17 @@ module "storage" {
   storage_accounts = {
     sa1 = {
       location          = "eastus2"
-      tier              = "Standard"
-      type              = "GRS"
-      kind              = "StorageV2"
       enable_protection = "false"
+      sku               = { tier = "Standard", type = "GRS" }
       tables = {
         t1 = {name = "table1"}
         t2 = {name = "table2"}
       }
 
     sa2 = {
-      location          = "southeastasia"
-      tier              = "Standard"
-      type              = "GRS"
-      kind              = "StorageV2"
+      location          = "eastus2"
       enable_protection = "false"
+      sku               = { tier = "Standard", type = "GRS" }
       tables = {
         t1 = {name = "table1"}
         t2 = {name = "table2"}
@@ -77,10 +71,8 @@ module "storage" {
   storage_accounts = {
     sa1 = {
       location          = "eastus2"
-      tier              = "Standard"
-      type              = "GRS"
-      kind              = "StorageV2"
       enable_protection = "false"
+      sku               = { tier = "Standard", type = "GRS" }
       queues = {
         q1 = {name = "queue1"}
         q2 = {name = "queue2"}
@@ -99,21 +91,17 @@ module "storage" {
   storage_accounts = {
     sa1 = {
       location          = "eastus2"
-      tier              = "Standard"
-      type              = "GRS"
-      kind              = "StorageV2"
       enable_protection = "false"
+      sku               = { tier = "Standard", type = "GRS" }
       shares = {
         fs1 = {name = "smbfileshare1",quota = 50}
         fs2 = {name = "smbfileshare2",quota = 10}
       }
 
     sa2 = {
-      location          = "southeastasia"
-      tier              = "Standard"
-      type              = "GRS"
-      kind              = "StorageV2"
+      location          = "sotheastasia"
       enable_protection = "false"
+      sku               = { tier = "Standard", type = "GRS" }
       shares = {
         fs1 = {name = "smbfileshare1",quota = 5}
         fs2 = {name = "smbfileshare2",quota = 10}
@@ -147,3 +135,11 @@ module "storage" {
 | Name | Description |
 | :-- | :-- |
 | `storageaccounts` | contains all storage accounts |
+
+## Authors
+
+Module is maintained by [Dennis Kool](https://github.com/dkooll) with help from [these awesome contributors](https://github.com/dkooll/terraform-azurerm-vnet/graphs/contributors).
+
+## License
+
+MIT Licensed. See [LICENSE](https://github.com/dkooll/terraform-azurerm-vnet/tree/master/LICENSE) for full details.
