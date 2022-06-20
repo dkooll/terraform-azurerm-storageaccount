@@ -1,5 +1,5 @@
 module "storage" {
-  source = "github.com/dkooll/terraform-azurerm-storageaccount"
+  source = "../../"
   storage_accounts = {
     sa1 = {
       location          = "westeurope"
