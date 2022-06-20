@@ -35,8 +35,8 @@ resource "azurerm_storage_account" "sa" {
   name                            = "sa${var.env}${each.key}${random_string.random[each.key].result}"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = each.value.location
-  account_tier                    = var.storage_accounts.sku.tier
-  account_replication_type        = var.storage_accounts.sku.type
+  account_tier                    = each.value.sku.tier
+  account_replication_type        = each.value.sku.type
   account_kind                    = "StorageV2"
   allow_nested_items_to_be_public = false
 
