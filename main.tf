@@ -21,7 +21,7 @@ resource "random_string" "random" {
   length    = 3
   min_lower = 3
   special   = false
-  number    = false
+  numeric   = false
   upper     = false
 }
 
